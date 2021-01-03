@@ -51,10 +51,8 @@ RUN echo \
 '#!/bin/bash\n\
  service mysql start\n\
   mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO \"root\"@\"%\" IDENTIFIED BY \"admin\" WITH GRANT OPTION;"\n\
-  mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO \"root\"@\"localhost\" IDENTIFIED BY \"admin\" WITH GRANT OPTION;"\n\
  apachectl -D FOREGROUND\n' \
 > /root/script.sh
 
-#RUN chmod +x /root/script.sh
+RUN chmod +x /root/script.sh
 ENTRYPOINT ["/bin/bash", "/root/script.sh"]
-
