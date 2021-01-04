@@ -2,12 +2,10 @@ version: '3.7'
 services:
     web-app-a:
         image: web-app
+        container_name: web-app-a
         build:
             context: .
             dockerfile: ./Dockerfile
-            args:
-                - GIT_REPO_URL=https://github.com/milosBZT/m214-web-app-a.git
-        container_name: web-app-a
         ports:
             - "10000:80"
             - "20000:3306"
@@ -16,12 +14,10 @@ services:
 
     web-app-b:
         image: web-app
-        build:
-            context: .
-            dockerfile: ./Dockerfile
-            args:
-                - GIT_REPO_URL=https://github.com/milosBZT/m214-web-app-b.git
         container_name: web-app-b
+#         build:
+#             context: .
+#             dockerfile: ./Dockerfile
         ports:
             - "10001:80"
             - "20001:3306"
