@@ -48,4 +48,5 @@ RUN echo \
  apachectl -D FOREGROUND\n' \
 > /root/script.sh
 
+## Run this command on container startup
 ENTRYPOINT ["/bin/bash", "/root/script.sh"]
