@@ -1,0 +1,6 @@
+## Make connection to the DB instances that are running inside the containers
+# Connect to DB of web-app-a that is connected to host port 20000
+mysql -u root -h 127.0.0.1 -P 20000 -p
+
+# Connect to DB of web-app-b that is connected to host port 20001
+mysql -u root -h 127.0.0.1 -P 20001 -p
