@@ -1,6 +1,5 @@
 FROM ubuntu:latest as build
 
-ARG GIT_REPO_URL
 ARG PROJ_ROOT=/home/web/web-app
 
 # These ports are expected to be used
@@ -18,8 +17,6 @@ ENV TZ="Europe/Zurich"
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get -y install \
 	apache2 \
-	git \
-	ssh \
 	mariadb-server \
 	php \
 	libapache2-mod-php7.4
@@ -42,9 +39,6 @@ RUN echo \
 RUN mkdir ${PROJ_ROOT}
 RUN rm -r /var/www/html
 RUN ln -s ${PROJ_ROOT} /var/www/html
-RUN chown -R web:web /var/www/html
-RUN chown -R web:web ${PROJ_ROOT}
-
 
 ## Run this script as entrypoint command
 RUN echo \
@@ -54,5 +48,4 @@ RUN echo \
  apachectl -D FOREGROUND\n' \
 > /root/script.sh
 
-RUN chmod +x /root/script.sh
 ENTRYPOINT ["/bin/bash", "/root/script.sh"]
