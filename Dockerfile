@@ -1,5 +1,7 @@
+## Pull latest ubuntu base-image
 FROM ubuntu:latest as build
 
+## Define directory in which the web app will reside
 ARG PROJ_ROOT=/home/web/web-app
 
 # These ports are expected to be used
